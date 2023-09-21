@@ -1,0 +1,53 @@
+Here are 10 examples of Ansible commands for various tasks:
+
+1. **Create a Directory on Remote Servers**:
+   ```bash
+   ansible -i inventory all -m shell -a "mkdir cicd"
+   ```
+
+2. **Install a Package on Remote Servers**:
+   ```bash
+   ansible -i inventory all -m apt -a "name=nginx state=present" -b
+   ```
+
+3. **Restart a Service on Remote Servers**:
+   ```bash
+   ansible -i inventory all -m service -a "name=nginx state=restarted" -b
+   ```
+
+4. **Copy a File to Remote Servers**:
+   ```bash
+   ansible -i inventory all -m copy -a "src=/local/path/to/file.txt dest=/remote/path/"
+   ```
+
+5. **Set a System's Hostname**:
+   ```bash
+   ansible -i inventory all -m hostname -a "name=myserver"
+   ```
+
+6. **Create a User on Remote Servers**:
+   ```bash
+   ansible -i inventory all -m user -a "name=johndoe password=secret"
+   ```
+
+7. **Add or Remove SSH Keys for User**:
+   ```bash
+   ansible -i inventory all -m authorized_key -a "user=johndoe state=present key='{{ lookup('file', '/path/to/id_rsa.pub') }}'"
+   ```
+
+8. **Execute a Shell Command on Remote Servers**:
+   ```bash
+   ansible -i inventory all -m command -a "echo 'Hello, World!'"
+   ```
+
+9. **Manage Docker Containers**:
+   ```bash
+   ansible -i inventory all -m docker_container -a "name=mycontainer image=myimage state=started"
+   ```
+
+10. **Create or Delete a Directory on Remote Servers Based on a Condition**:
+    ```bash
+    ansible -i inventory all -m file -a "path=/path/to/dir state=directory" -b -C
+    ```
+
+These examples cover a range of tasks you can perform with Ansible, from basic system administration to application deployment and configuration management.
