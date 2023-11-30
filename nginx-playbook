@@ -1,0 +1,25 @@
+---
+- name: Install Nginx
+  hosts: webservers
+  become: yes
+
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Ensure Nginx is running
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+
+
+==========================================v========================
+
+Open port 80 on EC2 to access nginx home page
+
+==========================================v========================
+
